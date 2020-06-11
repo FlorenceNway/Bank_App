@@ -1,6 +1,5 @@
 # Bank App
 
-
 =========================
 
 1. login/sign in page
@@ -14,7 +13,7 @@
 3. Loans account tab
     - Take a loan(3.35%/annual)
     - Add to main account
-    - Select term(optional)
+    - Select term
 4. Settings tab
     - Block account feature
     - change avatar(db)
