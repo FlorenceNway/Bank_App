@@ -1,5 +1,6 @@
 # Bank App
 
+
 =========================
 
 1. login/sign in page
@@ -11,7 +12,7 @@
     - Savings account tab
     - Rounding penses and store to savings feature(toggler)
 3. Loans account tab
-    - Take a loan(3.35%/annual)(optional)
+    - Take a loan(3.35%/annual)
     - Add to main account
     - Select term(optional)
 4. Settings tab
