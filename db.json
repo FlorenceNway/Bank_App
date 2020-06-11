@@ -1,0 +1,11 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Florence",
+      "password": "flo",
+      "avator": "url"
+    }
+  ]
+ 
+}
