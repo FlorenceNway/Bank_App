@@ -51,5 +51,17 @@
             font-weight: 500;
             cursor: pointer;
         }
+        .removeDisable {
+            background: #F4613A;
+        }
+
+        span {
+            font-size: 0.7em;
+            color: #ef6039;
+            text-decoration: underline;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+        }
     }
 }
