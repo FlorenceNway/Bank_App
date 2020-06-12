@@ -1,0 +1,34 @@
+.form {
+    width: 466px;
+    height: 398px;
+    margin: 40px auto;
+    background: linear-gradient(200.71deg, #3D4046 27.15%, rgba(61, 64, 70, 0) 154.52%);
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    form {
+        width: 200px;
+
+        .field {
+            margin: 10px 0;
+        }
+
+        input {
+            background: transparent;
+            border-style: none;
+            border-bottom: 1px solid #F4613A;
+            width: 90%;
+        }
+
+        button {
+            // position: absolute;
+            padding: 7px 10px;
+            border-radius: 7px;
+            background: transparent;
+            color: white;
+            margin: 20px 32%;
+        }
+    }
+}
