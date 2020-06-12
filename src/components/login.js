@@ -1,39 +1,35 @@
-import React,{useState, useEffect} from "react";
+import React,{useState, useEffect, useContext} from "react";
+import { BrowserRouter as Link } from "react-router-dom";
 import API from './API';
 import './login.scss';
+import { UserContext } from './UserContext';
 
-const Login = () => {
+const Login = (props) => {
     const [users, setUsers] = useState([]);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    function performValidation() {
+    const performValidation = () => {
         return username.length > 0 && password.length > 0;
     }
 
-    function handleSubmit(event) {
-        event.preventDefault();
+    const handleSubmit = (e) => {
+       e.preventDefault();
+       const user = users.filter(user => user.email === username && user.password === password)
+       props.onSubmit(user)
     }
 
-    useEffect(() => {
-        console.log("component has mounted! this will run only once");
-    
+
+    useEffect(() => { 
         API.getUsers().then((users) => {
           setUsers(users);
-          console.log(users)
         });
-    
-        // const fetchCats = async () => {
-        //   const cats = await API.getCats();
-        //   setCats(cats);
-        // };
-    
-        // fetchCats();
     
         return () => {
           console.log("component will unmount!");
         };
       }, []);
+
 
     return (
         <div className="form">
@@ -47,9 +43,10 @@ const Login = () => {
                     <label className="label">Password</label>
                     <input className="input" type="password" name="password" onChange={e => setPassword(e.target.value)} required />
                 </div>
-                <button disabled={!performValidation()} type="submit">
+                <button disabled={!performValidation()} className={performValidation()? "removeDisable":""} type="submit" >
                     Login
                 </button>
+                <Link to="/signUp" ><span>Sign Up</span></Link>
             </form>
         </div>
     )
