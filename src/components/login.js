@@ -1,4 +1,5 @@
 import React,{useState} from "react";
+import './login.scss';
 
 const Login = () => {
     const [username, setUsername] = useState("");
@@ -13,23 +14,25 @@ const Login = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-              <div className="field">
-                <label className="label">Email Address</label>
-                <div className="control">
-                  <input className="input" type="email" name="email" onChange={e => setUsername(e.target.value)} required />
+        <div className="form">
+            <form onSubmit={handleSubmit}>
+                <div className="field">
+                    <label className="label">Email</label>
+                    <div className="control">
+                    <input className="input" type="email" name="email" onChange={e => setUsername(e.target.value)} required />
+                    </div>
                 </div>
-              </div>
-              <div className="field">
-                <label className="label">Password</label>
-                <div className="control">
-                  <input className="input" type="password" name="password" onChange={e => setPassword(e.target.value)} required />
+                <div className="field">
+                    <label className="label">Password</label>
+                    <div className="control">
+                    <input className="input" type="password" name="password" onChange={e => setPassword(e.target.value)} required />
+                    </div>
                 </div>
-              </div>
-              <button block bsSize="large" disabled={!performValidation()} type="submit">
-                Login
-            </button>
-        </form>
+                <button disabled={!performValidation()} type="submit">
+                    Login
+                </button>
+            </form>
+        </div>
     )
 }
 export default Login;
