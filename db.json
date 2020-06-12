@@ -3,7 +3,15 @@
     {
       "id": 1,
       "name": "Florence",
+      "email": "flo@email.com",
       "password": "flo",
+      "avator": "url"
+    },
+    {
+      "id": 2,
+      "name": "Florence2",
+      "email": "flo2@email.com",
+      "password": "flo2",
       "avator": "url"
     }
   ]
