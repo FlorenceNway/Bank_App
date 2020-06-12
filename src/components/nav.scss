@@ -1,13 +1,37 @@
 .nav {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     margin: 0;
     list-style-type: none;
     background: #3D4046;
     color: white;
 
-    li {
+    li{
         margin: 10px 2px;
         padding: 10px 3px 10px 6px;
+        cursor: pointer;
     }
+    span {
+        font-size: 0.9em;
+        position: relative;
+    }
+    
+    a {
+        text-decoration: none;
+        color: white;
+
+        &:active span::before {
+            content: "";
+            padding: 1px 15px;
+            left: 0;
+            top: 21px;
+            position: absolute;
+            background: #F4613A;
+            cursor: pointer;
+        }
+    }
+     
+   
+    
+    
 }
