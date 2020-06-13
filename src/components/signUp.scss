@@ -1,3 +1,29 @@
 .signUp {
     color: white;
 }
+
+.signUp_title {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 13%;
+    border-bottom: 2px solid #F4613A;
+
+    span {
+        margin-right: 20px;
+        padding: 10px 0 10px 10px;
+    }
+}
+
+.SignUpform {
+    width: 300px;
+    height: auto;
+    padding: 10px 0 20px 0;
+    font-size: 0,9em;
+    
+
+    .field {
+        padding-top: 10px;
+    }
+
+}
