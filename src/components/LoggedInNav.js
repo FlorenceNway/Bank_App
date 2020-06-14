@@ -10,7 +10,7 @@ const LoggedInNav = () => {
   }
 
   const [menu, setMenu] = useState({
-    links: [{id: 1,name:'wallet'},{id: 2,name:'loan'}, {id: 3,name:'saving'}, {id: 4,name:'signout'}]
+    links: [{id: 1,name:'wallet'},{id: 2,name:'loans'}, {id: 3,name:'savings'},{id: 4,name:'setting'}, {id: 5,name:'signout'}]
   })
 
   return <div className="LoginNav">
