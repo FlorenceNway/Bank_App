@@ -26,10 +26,10 @@ const Wallet = () => {
         <LoggedInNav/>
         <h1> Wallet </h1>
         
-		<Route path="/saving" exact component={Saving} />
-		<Route path="/loan" exact component={Loans} />
-		<Route path="/setting" exact component={Setting} />
-		<Route path="/signOut" exact component={Login} />
+      <Route path="/saving" exact component={Saving} />
+      <Route path="/loan" exact component={Loans} />
+      <Route path="/setting" exact component={Setting} />
+      <Route path="/signOut" exact component={Login} />
     </div>
   ) : (
     ""
