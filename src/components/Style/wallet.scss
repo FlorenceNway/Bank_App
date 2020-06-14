@@ -1,0 +1,88 @@
+.wallet {
+    color: white;
+}
+
+.profile {
+    width: 466px;
+    margin: 20px auto;
+    display: flex;
+    justify-content:space-between;
+    border-radius: 5px;
+    background:linear-gradient(200.71deg, #3D4046 27.15%, rgba(61, 64, 70, 0) 154.52%);
+    position: relative;
+
+    .balance {
+        display: flex;
+        flex-direction: column;
+        margin: 20px;
+
+        &::before {
+                content: "";
+                padding: 40px 2px;
+                top: 15px;
+                left: 10px;
+                position: absolute;
+                background: #F4613A;
+                border-radius: 4px;
+            }
+        p:first-child {
+            font-family: sans-serif;
+            font-weight: 900;
+            font-size: 3em;
+            line-height: 34px;
+        }  
+        p:last-child {
+            margin-top: 17px;
+            font-weight: 100;
+        }  
+    }
+    .avatar {
+        display: flex;
+        flex-direction: column;
+        margin: 12px 7px;
+
+        img {
+            width: 64%;
+            margin: 0px 0px 0 14px;
+        }
+        p {
+            margin-top: 16px;
+            font-weight: 100;
+        }
+    }
+}
+
+.transBox {
+        width: 466px;
+        height: auto;
+        margin: 20px auto;
+        display: flex;
+        justify-content:space-between;
+        border-radius: 5px;
+        background:linear-gradient(200.71deg, #3D4046 27.15%, rgba(61, 64, 70, 0) 154.52%);
+        position: relative;
+
+    .transactions {
+        display: flex;
+        width: 100%;
+        margin: 20px;
+        flex-direction: column;
+        align-content: space-between;
+
+        li {
+            display: flex;
+            margin: 20px 0;
+            justify-content: space-between;
+        }
+        hr {
+            opacity: 0.1;
+        }
+
+        .transTitle {
+            margin-top: 0;
+        }
+        .transaction {
+
+        }
+    }
+}

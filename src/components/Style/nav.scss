@@ -1,0 +1,41 @@
+.nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    list-style-type: none;
+    background: #3D4046;
+    color: white;
+
+    li{
+        margin: 10px 2px;
+        padding: 10px 3px 10px 6px;
+        cursor: pointer;
+    }
+    span {
+        font-size: 0.9em;
+        position: relative;
+    }
+    
+    a {
+        text-decoration: none;
+        color: white;
+
+        &.active::before {
+                content: "";
+                padding: 1px 18px;
+                top: 40px;
+                position: absolute;
+                background: #F4613A;
+                cursor: pointer;
+        }
+    } 
+}
+
+.login_nav {
+    a {
+        padding: 5px;
+    }
+    span {
+        text-transform: uppercase;
+    }
+}
