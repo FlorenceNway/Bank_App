@@ -1,7 +1,8 @@
 import React,{useState} from "react";
-import { BrowserRouter as Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Input from './Form/Input'
 import backArrow from '../images/Arrow.svg'
+import manAvatar from '../images/man_1.svg'
 import './signUp.scss'
 
 const SingUp = () => {
@@ -26,9 +27,13 @@ const SingUp = () => {
         )
     }
 
+    const fileChangeHandler = (e) => {
+
+    }
+
 	return  <div className="form SignUpform">
                 <div className="signUp_title">
-                <Link to="/"><span><img src={backArrow}></img></span></Link>
+                <span><Link to="/backArrow"><img src={backArrow} alt="backArrow"></img></Link></span>
                 <span>SIGN UP</span></div>
 
                 <form onSubmit={handleSubmit}>
@@ -41,6 +46,24 @@ const SingUp = () => {
                         Sign Up
                     </button>
                 </form>
+                <div className='uploadAvatar'>
+                    
+                    <div className='button'>
+                        <label htmlFor='single'>
+                            Upload
+                        </label>
+                        <input type='file' id='single' onChange={fileChangeHandler} /> 
+                    </div>
+                    {/* <div>
+                        <p>Upload avatar</p>
+                        <div className='fileInput'>Upload<input type="file" name="fileInput" style={{height:0, overflow:'hidden'}}/></div>
+                    </div> */}
+
+                    <div>
+                        <img src={manAvatar}></img>
+                    </div> 
+                </div>
+                
             </div>
 }
 
