@@ -1,0 +1,33 @@
+.loan {
+    color: white;
+    .profile{
+        .balance {
+            &::before {
+                    background: #00BAC6;
+                    border-radius: 4px;
+            }
+    }   
+
+        .loan_buttons {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 10px;
+
+            button {
+                border-radius: 4px;
+                border: none;
+                padding: 5px 8px;
+                color: white;
+                font-weight: bold;
+                cursor: pointer;
+                &:first-child {
+                    background: #00BAC6;;
+                }
+                &:last-child {
+                    background: #61636A;
+                }
+            }
+        } 
+    }
+}
