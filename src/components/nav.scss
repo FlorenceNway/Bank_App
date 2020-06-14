@@ -20,11 +20,10 @@
         text-decoration: none;
         color: white;
 
-        span.underlineColor::before {
+        &.active::before {
                 content: "";
                 padding: 1px 15px;
-                left: 0;
-                top: 21px;
+                top: 40px;
                 position: absolute;
                 background: #F4613A;
                 cursor: pointer;
@@ -35,5 +34,8 @@
 .login_nav {
     a {
         padding: 5px;
+    }
+    span {
+        text-transform: uppercase;
     }
 }
