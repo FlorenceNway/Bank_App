@@ -17,7 +17,9 @@ const SingUp = () => {
         email: '',
         password: '',
         confpassword: '',
-        uploadImage: ''
+        avatar: '',
+        balance: 0,
+        transactions:[]
     })
   
     const handleSubmit = (e) => {
@@ -40,7 +42,7 @@ const SingUp = () => {
         let imgPath = e.target.value.split("\\")
 
         setSignUpUserData({...signUpUserData,
-            uploadImage: imgPath[2]})
+            avatar: imgPath[2]})
     }
 
     return  (
