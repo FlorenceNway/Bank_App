@@ -5,13 +5,13 @@ import "./nav.scss";
 
 const LoggedInNav = () => {
 
-const signOut = () => {
-  localStorage.removeItem('userEmail')
-}
+  const signOut = () => {
+    localStorage.removeItem('userEmail')
+  }
 
-const [menu, setMenu] = useState({
-  links: [{id: 1,name:'wallet'},{id: 2,name:'loan'}, {id: 3,name:'saving'}, {id: 4,name:'signout'}]
-})
+  const [menu, setMenu] = useState({
+    links: [{id: 1,name:'wallet'},{id: 2,name:'loan'}, {id: 3,name:'saving'}, {id: 4,name:'signout'}]
+  })
 
   return <div className="LoginNav">
           <ul className="login_nav nav">
@@ -21,7 +21,6 @@ const [menu, setMenu] = useState({
             <li>
               {menu.links.map((link) =>(
                 <NavLink to={`/${link.name}`} activeClassName={"active"} key={link.id}>
-                  {console.log(link.name)}
                   {link.name === "signout"?
                     <span onClick={signOut}>{link.name}</span> : <span>{link.name}</span> 
                   }
