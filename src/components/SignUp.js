@@ -6,7 +6,7 @@ import manAvatar from '../images/man_1.svg'
 import Nav from "./Nav";
 import API from "./API";
 import { useHistory } from "react-router-dom";
-import './signUp.scss'
+import './Style/signUp.scss'
 
 const SingUp = () => {
     const history = useHistory();

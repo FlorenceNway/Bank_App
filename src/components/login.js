@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import API from './API';
 import Input from './Form/Input'
 import Nav from "./Nav";
-import './login.scss';
+import './Style/login.scss';
 
 const Login = () => {
     const history = useHistory();

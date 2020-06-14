@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import Logo from "../images/CH.svg";
 import { NavLink } from "react-router-dom";
-import "./nav.scss";
+import "./Style/nav.scss";
 
 const LoggedInNav = () => {
 
