@@ -1,0 +1,40 @@
+.saving {
+    color: white;
+    .profile{
+        .balance {
+            &::before {
+                    content: "";
+                    padding: 40px 2px;
+                    top: 15px;
+                    left: 10px;
+                    position: absolute;
+                    background: #00C637;
+                    border-radius: 4px;
+            }
+        }   
+        .saving_buttons {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 10px;
+
+            button {
+                border-radius: 4px;
+                border: none;
+                padding: 5px 8px;
+                color: white;
+                font-weight: bold;
+                cursor: pointer;
+                
+                &:first-child {
+                    background: #00C637;
+                }
+                &:last-child {
+                    background: #61636A;
+                }
+            }
+            
+        }  
+    }
+}
+       
