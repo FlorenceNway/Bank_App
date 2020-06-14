@@ -20,18 +20,20 @@
         text-decoration: none;
         color: white;
 
-        &:active span::before {
-            content: "";
-            padding: 1px 15px;
-            left: 0;
-            top: 21px;
-            position: absolute;
-            background: #F4613A;
-            cursor: pointer;
+        span.underlineColor::before {
+                content: "";
+                padding: 1px 15px;
+                left: 0;
+                top: 21px;
+                position: absolute;
+                background: #F4613A;
+                cursor: pointer;
         }
+    } 
+}
+
+.login_nav {
+    a {
+        padding: 5px;
     }
-     
-   
-    
-    
 }
