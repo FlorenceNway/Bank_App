@@ -16,7 +16,7 @@ const Nav = () => {
             <span>LOGIN</span> 
           </NavLink> / 
           <NavLink to="/signUp" exact activeClassName={"active"}>
-            <span>SIGN UP</span>
+            <span> SIGN UP</span>
           </NavLink>
         </li>
       </ul>
