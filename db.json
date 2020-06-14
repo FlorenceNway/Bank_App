@@ -2,18 +2,101 @@
   "users": [
     {
       "id": 1,
-      "name": "Florence",
+      "firstname": "Florence",
+      "lastname": "Nway",
       "email": "flo@email.com",
       "password": "flo",
-      "avator": "url"
+      "avator": "url",
+      "balance": 3830.21,
+      "Saving_balance": 12000.53,
+      "Loan_balance": -1250.00,
+      "transactions": [
+        {
+          "transaction": "Mark & Spanser",
+          "debitcredit": "-",
+          "amount": 8.64
+        },
+        {
+          "transaction": "Mark",
+          "debitcredit": "-",
+          "amount": 9.64
+        },
+        {
+          "transaction": "Spanser",
+          "debit/credit": "+",
+          "amount": 10.64
+        },
+        {
+          "transaction": "Mark & Spanser",
+          "debitcredit": "-",
+          "amount": 11.64
+        }
+      ],
+      "saving_transactions": [
+        {
+          "transaction": "Direct deposit",
+          "debit": "+",
+          "amount" : 400
+        },
+        {
+          "transaction": "Direct deposit",
+          "debit": "+",
+          "amount" : 350
+        },
+        {
+          "transaction": "Rounded expense",
+          "debit": "+",
+          "amount" : 0.73
+        },
+        {
+          "transaction": "Rounded expense",
+          "debit": "+",
+          "amount" : 0.27
+        }
+      ],
+      "loan_transactions": [
+        {
+          "transaction": "Thanks for payment",
+          "debit": "+",
+          "amount" : 400
+        },
+        {
+          "transaction": "Thanks for payment",
+          "debit": "+",
+          "amount" : 350
+        },
+        {
+          "transaction": "Thanks for payment",
+          "debit": "+",
+          "amount" : 100
+        },
+        {
+          "transaction": "Loan",
+          "debit": "-",
+          "amount" : 2100
+        }
+      ]
     },
     {
       "id": 2,
-      "name": "Florence2",
+      "firstname": "Florence2",
+      "lastname": "Nway2",
       "email": "flo2@email.com",
       "password": "flo2",
-      "avator": "url"
+      "avator": "url",
+      "balance": 0,
+      "transactions": []
+    },
+    {
+      "firstname": "new",
+      "lastname": "User",
+      "email": "newuser@email.com",
+      "password": "new",
+      "confpassword": "new",
+      "avatar": "myshoe.png",
+      "balance": 0,
+      "transactions": [],
+      "id": 3
     }
   ]
- 
 }
