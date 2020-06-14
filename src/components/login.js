@@ -2,9 +2,10 @@ import React,{useState, useEffect, useContext} from "react";
 import { Link, useHistory } from "react-router-dom";
 import API from './API';
 import Input from './Form/Input'
+import Nav from "./Nav";
 import './login.scss';
 
-const Login = (props) => {
+const Login = () => {
     const history = useHistory();
     const [fetchUsers, setFetchUsers] = useState([]);
 
@@ -31,7 +32,6 @@ const Login = (props) => {
         };
       }, []);
 
-    console.log('props passed from App', props)
 
     const handleSubmit = (e) => {
        e.preventDefault();
@@ -47,6 +47,8 @@ const Login = (props) => {
     const isValidForm = inputUser.username && inputUser.password;
 
     return (
+        <>
+        <Nav />
         <div className="form">
             <div className="login_title"><span>Login</span></div>
             <form onSubmit={handleSubmit}>
@@ -58,6 +60,7 @@ const Login = (props) => {
                 <Link to="/signUp" ><span>Sign Up</span></Link>
             </form>
         </div>
+      </>  
     )
 }
 export default Login;
