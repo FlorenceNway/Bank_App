@@ -22,8 +22,8 @@ function App() {
 		<Route path="/backArrow" exact component={Login} />
 		
 		<Route path="/wallet" exact component={Wallet} />
-		<Route path="/loan" exact component={Loans} />
-		<Route path="/saving" exact component={Saving} />
+		<Route path="/loans" exact component={Loans} />
+		<Route path="/savings" exact component={Saving} />
       	<Route path="/setting" exact component={Setting} />
 		<Route path="/signOut" exact component={Login} />
      
