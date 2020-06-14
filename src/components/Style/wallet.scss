@@ -81,8 +81,9 @@
         .transTitle {
             margin-top: 0;
         }
-        .transaction {
-
+        .transaction:hover {
+            background-color: grey;
+            cursor: pointer;
         }
     }
 }
