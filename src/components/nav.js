@@ -1,24 +1,19 @@
-import React , {useState} from "react";
+import React from "react";
 import Logo from "../images/CH.svg";
 import { NavLink } from "react-router-dom";
 import "./Style/nav.scss";
+import LinksBeforeLogin from "./LinksBeforeLogIn";
+import LinksAfterLogIn from './LinksAfterLogIn';
 
 const Nav = () => {
 
   return (
-    <div className="Login">
-      <ul className="nav">
+    <div className="Login LoginNav">
+      <ul className="login_nav nav">
         <li>
           <img src={Logo} alt="logo"></img>
         </li>
-        <li>
-          <NavLink to="/" exact activeClassName={"active"}>
-            <span>LOGIN</span> 
-          </NavLink> / 
-          <NavLink to="/signUp" exact activeClassName={"active"}>
-            <span> SIGN UP</span>
-          </NavLink>
-        </li>
+        {localStorage.userEmail ? <LinksAfterLogIn/> : <LinksBeforeLogin/>}
       </ul>
     </div>
   );
