@@ -23,7 +23,7 @@
         },
         {
           "transaction": "Spanser",
-          "debit/credit": "+",
+          "debitcredit": "+",
           "amount": 10.64
         },
         {
