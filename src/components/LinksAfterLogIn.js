@@ -14,7 +14,7 @@ const LinksAfterLogIn = ({clickSetting}) => {
 
   return  <li>
             {menu.links.map((link) =>(
-              link.name == "Setting" ? <span className={'settingTab'} onClick={clickSetting}>{link.name}</span> :
+              link.name == "Setting" ? <span key={link.id} className={'settingTab'} onClick={clickSetting}>{link.name}</span> :
             <NavLink to={`/${link.name}`} activeClassName={"active"} key={link.id}>
                 {link.name === "signout"?
                 <span onClick={signOut}>{link.name}</span> : <span>{link.name}</span> 
