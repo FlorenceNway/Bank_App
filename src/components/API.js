@@ -11,7 +11,19 @@ const postUser = (user) =>
     body: JSON.stringify(user),
   }).then((res) => res.json());
 
+const patchUser = (id,user) =>
+  fetch(`${USERS_URL}/${id}`, {
+    method: "PATCH",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(user),
+  }).then((res) => res.json());
+
+  
 export default {
   getUsers,
   postUser,
+  patchUser,
 };
