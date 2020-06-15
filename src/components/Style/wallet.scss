@@ -1,7 +1,12 @@
 .wallet {
     color: white;
 }
-
+.red {
+    color: #F4613A
+}
+.green {
+    color: #00C637;
+}
 .profile {
     width: 466px;
     margin: 20px auto;
@@ -80,6 +85,21 @@
 
         .transTitle {
             margin-top: 0;
+            span {
+                img {
+                    position: absolute;
+                    top: 21px;
+                    left: 135px;
+                    width: 13px;
+                    cursor: pointer;
+                }
+                img:first-child {
+                    top: 21px;
+                }
+                img:last-child {
+                    top: 30px;
+                }
+            }
         }
         .transaction:hover {
             background-color: grey;
