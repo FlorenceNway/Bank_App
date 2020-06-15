@@ -7,6 +7,11 @@ import './Style/login.scss';
 
 const Login = () => {
     const history = useHistory();
+
+    useEffect(() => {
+        localStorage.userEmail && history.push('/wallet')
+    })
+
     const [fetchUsers, setFetchUsers] = useState([]);
     const [errMsg, setErrMsg] = useState([]);
 
