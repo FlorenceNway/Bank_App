@@ -30,8 +30,8 @@ const Loan = () => {
   return isRendering ? (
       
     <div className="loan saving">
-        <Nav />
-        <div className="profile">
+      <Nav />
+      <div className="profile">
         <div className='balance'>
         {loggedInUser.map((user,index)=> (
             <p key={index}>{user.Loan_balance}</p>))}
@@ -47,20 +47,18 @@ const Loan = () => {
         <ul className="transactions">
           <TransactionTitle/>
           {loggedInUser.map(user => user.loan_transactions.length?
-          user.loan_transactions.map((transaction,index)=> (
+            user.loan_transactions.map((transaction,index)=> (
               <li className='transaction' key={index}>
                 <p>{transaction.transaction}</p>
                 <p><span className={transaction.debit === '+'? "green":"red"}>{transaction.debit}</span>
                 <span>£</span>{transaction.amount}</p>
               </li>
-          )): (<li className='transaction'>
+            )): (<li className='transaction'>
                   <p>{"No transaction to show!"}</p>
-              </li>
-        ))}
-          
-        </ul>
+                </li>
+            ))}
+          </ul>
       </div>
-        
     </div>
   ) : (
     ""
