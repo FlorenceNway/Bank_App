@@ -8,6 +8,7 @@ import './Style/login.scss';
 const Login = () => {
     const history = useHistory();
     const [fetchUsers, setFetchUsers] = useState([]);
+    const [errMsg, setErrMsg] = useState([]);
 
     const [inputUser, setInputUser] = useState({
         username: "",
@@ -37,11 +38,14 @@ const Login = () => {
        e.preventDefault();
        const {username, password} = inputUser
        const isValidCredentials = fetchUsers.filter(user => user.email === username && user.password === password)
-       if(isValidCredentials) {
+       console.log(isValidCredentials)
+       if(isValidCredentials.length !== 0) {
            // Push 
            localStorage.userEmail = username;
            history.push('/wallet')
         }
+        setErrMsg("Incorrect Username and Password")
+        
     }
 
     const isValidForm = inputUser.username && inputUser.password;
@@ -58,6 +62,7 @@ const Login = () => {
                     Login
                 </button>
                 <Link to="/signUp" ><span>Sign Up</span></Link>
+                {errMsg? <p className="red">{errMsg}</p>:""}
             </form>
         </div>
       </>  
