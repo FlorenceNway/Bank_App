@@ -1,13 +1,14 @@
-import React, { useEffect, useState, useReducer } from "react";
+import React, { useEffect, useState} from "react";
 import { useHistory } from "react-router-dom";
 import Saving from "./Saving";
 import Loans from "./Loan";
 import Setting from "./Setting";
 import Login from "./Login";
+import TransactionTitle from "./TransactionTitle"
 import manAvatar from '../images/man_1.svg';
 import { Route} from "react-router-dom";
 import "./Style/wallet.scss";
-import LoggedInNav from "./LoggedInNav";
+import Nav from "./Nav";
 import API from './API';
 
 
@@ -39,8 +40,7 @@ const Wallet = () => {
   return isRendering ? (
       
     <div className="wallet">
-      <LoggedInNav/>
-
+      <Nav/>
       <div className="profile">
         <div className='balance'>
         {loggedInUser.map((user,index)=> (
@@ -55,16 +55,13 @@ const Wallet = () => {
 
       <div className='transBox'>
         <ul className="transactions">
-          <li className='transTitle'>
-            <p>Transactions</p>
-            <p>Amount</p>
-          </li>
-          <hr/>
+          <TransactionTitle/>
           {loggedInUser.map(user => user.transactions.length?
           user.transactions.map((transaction,index)=> (
               <li className='transaction' key={index}>
                 <p>{transaction.transaction}</p>
-                <p>{transaction.debitcredit}<span>£</span>{transaction.amount}</p>
+                <p><span className={transaction.debitcredit === '+'? "green":"red"}>{transaction.debitcredit}</span>
+                <span>£</span>{transaction.amount}</p>
               </li>
           )): (<li className='transaction'>
                   <p>{"No transaction to show!"}</p>

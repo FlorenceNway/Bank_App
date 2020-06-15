@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import LoggedInNav from "./LoggedInNav";
-import API from './API'
+import Nav from "./Nav";
+import API from './API';
+import TransactionTitle from "./TransactionTitle";
 import './Style/loan.scss'
 
 const Loan = () => {
@@ -29,7 +30,7 @@ const Loan = () => {
   return isRendering ? (
       
     <div className="loan saving">
-        <LoggedInNav/>
+        <Nav />
         <div className="profile">
         <div className='balance'>
         {loggedInUser.map((user,index)=> (
@@ -44,16 +45,13 @@ const Loan = () => {
 
       <div className='transBox'>
         <ul className="transactions">
-          <li className='transTitle'>
-            <p>Transactions</p>
-            <p>Amount</p>
-          </li>
-          <hr/>
+          <TransactionTitle/>
           {loggedInUser.map(user => user.loan_transactions.length?
           user.loan_transactions.map((transaction,index)=> (
               <li className='transaction' key={index}>
                 <p>{transaction.transaction}</p>
-                <p>{transaction.debit}<span>£</span>{transaction.amount}</p>
+                <p><span className={transaction.debit === '+'? "green":"red"}>{transaction.debit}</span>
+                <span>£</span>{transaction.amount}</p>
               </li>
           )): (<li className='transaction'>
                   <p>{"No transaction to show!"}</p>
