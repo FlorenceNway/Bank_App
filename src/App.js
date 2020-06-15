@@ -1,7 +1,5 @@
 import React ,{useState, useEffect} from "react";
 import "./App.css";
-import Nav from "./components/Nav";
-import LoggedInNav from "./components/LoggedInNav";
 import Wallet from "./components/Wallet";
 import Saving from "./components/Saving";
 import Loans from "./components/Loan";
@@ -16,7 +14,6 @@ function App() {
 
   return (
     <div className="App">
-    	
 		<Route path="/" exact component={Login} />
 		<Route path="/signUp" exact component={Signup} />
 		<Route path="/backArrow" exact component={Login} />
