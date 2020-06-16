@@ -22,10 +22,13 @@
                 font-weight: bold;
                 cursor: pointer;
                 background-color: #61636A;
-                &:first-child:hover, &:first-child.active {
+                &:first-child:hover{
                     background: #00BAC6;
                 }
-                &:last-child:hover, &:last-child:active {
+                &:last-child:hover {
+                    background: #00BAC6;
+                }
+                &.payactive, &.takeactive{
                     background: #00BAC6;
                 }
             }
@@ -69,7 +72,7 @@
             height: 30px;
             border-bottom: 1px solid #8080804d;
             margin-left: 10px;
-            width: 325px;
+            width: 300px;
             color: white;
             text-indent: 15px;              
         }
