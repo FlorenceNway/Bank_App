@@ -25,13 +25,17 @@
                 color: white;
                 font-weight: bold;
                 cursor: pointer;
+                background: #61636A;
                 
-                &:first-child {
-                    background: #00C637;
-                }
-                &:last-child {
-                    background: #61636A;
-                }
+                    &:first-child:hover{
+                        background: #00C637;
+                    }
+                    &:last-child:hover {
+                        background: #00C637;
+                    }
+                    &.payInactive, &.payOutactive{
+                        background: #00C637;
+                    }
             }
             
         }  
