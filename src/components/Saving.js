@@ -81,7 +81,6 @@ const Savings = () => {
     setVal(data)
   }
 
-  console.log(val)
   return isRendering ? (
       
     <div className="saving">
