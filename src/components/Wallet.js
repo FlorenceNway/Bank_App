@@ -60,7 +60,7 @@ const Wallet = () => {
           user.transactions.map((transaction,index)=> (
               <li className='transaction' key={index}>
                 <p>{transaction.transaction}</p>
-                <p><span className={transaction.debitcredit === '+'? "green":"red"}>{transaction.debitcredit}</span>
+                <p><span className={transaction.debitcredit === '+'? "green":"orange"}>{transaction.debitcredit}</span>
                 <span>£</span>{transaction.amount}</p>
               </li>
           )): (<li className='transaction'>
