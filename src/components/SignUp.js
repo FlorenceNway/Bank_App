@@ -50,23 +50,21 @@ const SingUp = () => {
             <Nav/>
                 <div className="form SignUpform">
                     <div className="signUp_title">
-                    <span><Link to="/backArrow"><img src={backArrow} alt="backArrow"></img></Link></span>
-                    <span>SIGN UP</span></div>
+                        <span><Link to="/backArrow"><img src={backArrow} alt="backArrow"></img></Link></span>
+                        <span>SIGN UP</span>
+                    </div>
 
                     <form onSubmit={handleSubmit}>
                         <Input label="First Name" type='text' name="firstname" changeHandler={changeHandler} />
                         <Input label="Last Name" type='text' name="lastname" changeHandler={changeHandler} />
                         <Input label="Email" type='email' name="email" changeHandler={changeHandler} />
-                        <Input label="Password" type='text' name="password" changeHandler={changeHandler} />
-                        <Input label="Confirm Password" type='text' name="confpassword" changeHandler={changeHandler} />
-                        
+                        <Input label="Password" type='password' name="password" changeHandler={changeHandler} />
+                        <Input label="Confirm Password" type='password' name="confpassword" changeHandler={changeHandler} />
 
                         <div className='uploadAvatar'>
                             <div className='button'>
-                                <label htmlFor='single'>
-                                    Upload
-                                </label>
-                                <input type='file' id='single' onChange={uploadFileHandler} /> 
+                                <label htmlFor='upload'>Upload
+                                <input type='file' id='upload' onChange={uploadFileHandler} /></label>
                             </div>
                             <div>
                                 <img src={manAvatar}></img>
