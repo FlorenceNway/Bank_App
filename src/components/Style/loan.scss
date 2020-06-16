@@ -3,6 +3,10 @@
     .profile{
         .balance {
             &::before {
+                    content: "";
+                    padding: 40px 2px;
+                    top: 15px;
+                    left: 10px;
                     background: #00BAC6;
                     border-radius: 4px;
             }
@@ -22,6 +26,7 @@
                 font-weight: bold;
                 cursor: pointer;
                 background-color: #61636A;
+
                 &:first-child:hover{
                     background: #00BAC6;
                 }
@@ -35,6 +40,7 @@
         } 
     }
 }
+
 .balTranfSection {
     display: flex;
     flex-direction: column;
