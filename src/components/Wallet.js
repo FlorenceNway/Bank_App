@@ -23,9 +23,8 @@ const Wallet = () => {
   const [Users, setUsers] = useState([]);
   const [user, setUser] = useState(null)
   const [addMinus, setAddMinus] = useState(null)
-  const [payInActive, setPayInActive] = useState(false)
-  const [payOutActive, setPayOutActive] = useState(false)
   const [isRendering, setIsRendering] = useState(false);
+  const [isON, setIsON] = useState(false)
   const history = useHistory();
 
   useEffect(() => {
@@ -53,20 +52,45 @@ const Wallet = () => {
     setTransferValue(e.target.value)
   }
 
+  const getRoundOnOff = (roundOnOffVal) => {
+    console.log('wallet',roundOnOffVal)
+    setIsON(roundOnOffVal) //true or false
+  }
+
   const payExpense = () => {
     setAddMinus('-')
   }
 
   const transfer = () => {
     if(addMinus == '-') {
-      loggedInUser[0].balance -= parseInt(transferValue)
-      loggedInUser[0].transactions.push({
+      const decimal_number = parseFloat(transferValue) // 2.56
+      const int_number = parseInt(transferValue) // 2
+      let decimal = decimal_number - int_number   // 2.56 - 2 = 0.56
+      let saving = 1 - decimal   // 1 - 0.56 = 0.4399999999999
+      let roundedPense = saving + decimal_number //2.56 + 0.34 = 3
+
+      if (isON) {
+        loggedInUser[0].balance -= roundedPense
+        loggedInUser[0].Saving_balance += parseFloat(saving.toFixed(2))
+
+        loggedInUser[0].transactions.push({
           "transaction": "New Expense",
           "debitcredit": "-",
-          "amount": parseInt(transferValue)
-      })
+          "amount": roundedPense
+        })
+      }else {
+        loggedInUser[0].balance -= decimal_number
+
+        loggedInUser[0].transactions.push({
+          "transaction": "New Expense",
+          "debitcredit": "-",
+          "amount": decimal_number
+        })
+      }
+
       setUser({...user,
-        balance:loggedInUser[0].balance,
+        balance: loggedInUser[0].balance,
+        Saving_balance: loggedInUser[0].Saving_balance,
         transactions:{...loggedInUser[0].transactions}
       }) //wallet balance
     }
@@ -81,7 +105,7 @@ const Wallet = () => {
   return isRendering ? (
       
     <div className="wallet">
-      <Nav onOff={onOff} onOffvalue={val}/>
+      <Nav onOff={onOff} onOffvalue={val} getRoundOnOff={getRoundOnOff}/>
 
       <section className={"balTranfSection"}>
         <div className="profile">
