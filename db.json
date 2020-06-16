@@ -76,27 +76,6 @@
           "amount" : 2100
         }
       ]
-    },
-    {
-      "id": 2,
-      "firstname": "Florence2",
-      "lastname": "Nway2",
-      "email": "flo2@email.com",
-      "password": "flo2",
-      "avator": "url",
-      "balance": 0,
-      "transactions": []
-    },
-    {
-      "firstname": "new",
-      "lastname": "User",
-      "email": "newuser@email.com",
-      "password": "new",
-      "confpassword": "new",
-      "avatar": "myshoe.png",
-      "balance": 0,
-      "transactions": [],
-      "id": 3
     }
   ]
 }
