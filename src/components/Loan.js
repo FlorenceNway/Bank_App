@@ -12,6 +12,8 @@ const Loan = () => {
   const [user, setUser] = useState(null)
   const [value, setValue] = useState(0)
   const [addMinus, setAddMinus] = useState(null)
+  const [payActive, setPayActive] = useState(false)
+  const [takeActive, setTakeActive] = useState(false)
 
   useEffect(() => {
     API.getUsers().then((users) => {
@@ -40,10 +42,14 @@ const Loan = () => {
 
   const takeloan = () => {
     setAddMinus('+')
+    setPayActive(false)
+    setTakeActive(true)
   }
 
   const payback = () => {
     setAddMinus('-')
+    setTakeActive(false)
+    setPayActive(true)
   }
 
   const transfer = () => {
@@ -66,15 +72,14 @@ const Loan = () => {
       <section className={'balTranfSection'}>
         <div className="profile">
           <div className='balance'>
-
-          { !user ?
-          loggedInUser.map((user,index)=> (
-              <p key={index}>{user.Loan_balance}</p>)): <p>{user.Loan_balance}</p>} 
-              <p>Balance</p>
+              { !user ?
+                loggedInUser.map((user,index)=> (
+                <p key={index}>{user.Loan_balance}</p>)): <p>{user.Loan_balance}</p>} 
+                <p>Balance</p>
           </div>
           <div className='loan_buttons'>
-            <button onClick={takeloan}>TAKE LOAN</button>
-            <button onClick={payback}>PAY BACK</button>
+            <button onClick={takeloan} className={takeActive?"payactive":""}>TAKE LOAN</button>
+            <button onClick={payback} className={payActive?"takeactive":""}>PAY BACK</button>
           </div>
         </div> 
         <hr/>
