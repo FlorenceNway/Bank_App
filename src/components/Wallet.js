@@ -11,7 +11,7 @@ import "./Style/wallet.scss";
 import Nav from "./Nav";
 import API from './API';
 import { UserContext } from "./UserContext";
-
+import Overlay from "./Overlay";
 
 const Wallet = () => {
   const {val, setVal} = useContext(UserContext)
@@ -25,7 +25,6 @@ const Wallet = () => {
   }, []);
 
   const loggedInUser = getUsers.filter(user => user.email === localStorage.userEmail)
-
 
   const history = useHistory();
   useEffect(() => {
@@ -47,7 +46,7 @@ const Wallet = () => {
       
     <div className="wallet">
       <Nav onOff={onOff} onOffvalue={val}/>
-      <div className={val? "overlay":""}>
+  
       <div className="profile">
         <div className='balance'>
         {loggedInUser.map((user,index)=> (
@@ -74,10 +73,10 @@ const Wallet = () => {
                   <p>{"No transaction to show!"}</p>
               </li>
         ))}
-          
         </ul>
       </div>
-    </div> 
+
+      <Overlay val={val} />
       <Route path="/saving" exact component={Saving} />
       <Route path="/loan" exact component={Loans} />
       <Route path="/setting" exact component={Setting} />
