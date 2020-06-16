@@ -5,6 +5,7 @@ import Nav from "./Nav";
 import TransactionTitle from "./TransactionTitle"
 import './Style/saving.scss'
 import { UserContext } from "./UserContext";
+import Overlay from "./Overlay";
 
 const Savings = () => {
   const {val, setVal} = useContext(UserContext)
@@ -16,7 +17,7 @@ const Savings = () => {
   const [addMinus, setAddMinus] = useState(null)
   const [payInActive, setPayInActive] = useState(false)
   const [payOutActive, setPayOutActive] = useState(false)
-  const [overlay, setOverlay] = useState(false)
+ 
 
   useEffect(() => {
     API.getUsers().then((users) => {
@@ -70,7 +71,6 @@ const Savings = () => {
   }
 
   const onOff = (data) => {
-    // data ? setOverlay(true) : setOverlay(false)
     setVal(data)
   }
 
@@ -78,8 +78,7 @@ const Savings = () => {
   return isRendering ? (
       
     <div className="saving">
-        <Nav onOff={onOff} onOffvalue={val}/>
-        <div className={val? "overlay":""}>
+        <Nav onOff={onOff} onOffvalue={val}/> {/* onOff -> passed from parent , onOffvalue -> val get from useContext */}
         <section className={'balTranfSection'}>
             <div className="profile">
               <div className='balance'>
@@ -99,29 +98,28 @@ const Savings = () => {
                 <span>£</span><input type='text' onChange={getValuetoTransfer}/>
                 <button onClick={transfer}>Transfer</button>
               </div>: ""}
-            
         </section>   
 
-      <div className='transBox'>
-        <ul className="transactions">
-          <TransactionTitle/>
-          {loggedInUser.map(user => user.saving_transactions.length?
-          user.saving_transactions.map((transaction,index)=> (
-              <li className='transaction' key={index}>
-                <p>{transaction.transaction}</p>
-                <p><span className={transaction.debit === '+'? "green":"red"}>{transaction.debit}</span>
-                <span>£</span>{transaction.amount}</p>
-              </li>
-          )): (<li className='transaction'>
-                  <p>{"No transaction to show!"}</p>
-              </li>
-        ))}
-          
-        </ul>
-      </div>
+        <div className='transBox'>
+          <ul className="transactions">
+            <TransactionTitle/>
+            {loggedInUser.map(user => user.saving_transactions.length?
+            user.saving_transactions.map((transaction,index)=> (
+                <li className='transaction' key={index}>
+                  <p>{transaction.transaction}</p>
+                  <p><span className={transaction.debit === '+'? "green":"red"}>{transaction.debit}</span>
+                  <span>£</span>{transaction.amount}</p>
+                </li>
+            )): (<li className='transaction'>
+                    <p>{"No transaction to show!"}</p>
+                </li>
+          ))}
+          </ul>
+        </div>
+      <Overlay val={val}/>
     
     </div>
-    </div>
+     
   ) : (
     ""
   );
