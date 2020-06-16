@@ -1,6 +1,7 @@
 const USERS_URL = "http://localhost:3001/users";
 
 const getUsers = () => fetch(USERS_URL).then((res) => res.json());
+
 const postUser = (user) =>
   fetch(USERS_URL, {
     method: "POST",
