@@ -19,7 +19,11 @@ const SingUp = () => {
         confpassword: '',
         avatar: '',
         balance: 0,
-        transactions:[]
+        Saving_balance: 0,
+        Loan_balance: 0,
+        transactions:[],
+        saving_transactions:[],
+        loan_transactions:[]
     })
   
     const handleSubmit = (e) => {
