@@ -5,9 +5,13 @@ import manAvatar from "../images/man_1.svg";
 import API from "./API";
 import "./Style/setting.scss";
 
-const Setting = () => {
+const Setting = ({onOffHandler, onOffvalue}) => {
   const [isHidden, setIsHidden] = useState(false);
   const [user, setUser] = useState(null);
+  const [onOff , setOnOff] = useState({
+    on: false,
+    off: true
+  })
 
   useEffect(() => {
     API.getUsers().then((users) => {
@@ -39,6 +43,10 @@ const Setting = () => {
     setUser({ ...user, avatar: imgPath[2] });
   };
 
+  const onOffChangeHandler = (e) => {
+    onOffHandler(e.target.checked)
+  }
+
   return !isHidden && user ? (
 
     <div className="setting">
@@ -54,7 +62,7 @@ const Setting = () => {
             <p>Block account</p>
             <span className="on">On</span>
             <label className="switch">
-              <input type="checkbox" value="Off"/> <span className="slider"></span>
+              <input type="checkbox" onChange={onOffChangeHandler} checked={onOffvalue}/> <span className="slider"></span>
             </label>
             <span className="off">Off</span>
           </div>
@@ -71,7 +79,7 @@ const Setting = () => {
         <form onSubmit={handleSubmit}>
           <Input label="First Name" type="text" name="firstname" changeHandler={changeHandler} value={user.firstname}/>
           <Input label="Last Name" type="text" name="lastname" changeHandler={changeHandler} value={user.lastname}/>
-          <Input label="Email" type="email"       name="email"  changeHandler={changeHandler} value={user.email}/>
+          <Input label="Email" type="email"  name="email"  changeHandler={changeHandler} value={user.email}/>
           <Input label="Password" type="text" name="password" changeHandler={changeHandler}value={user.password}/>
           <Input label="Confirm Password" type="text" name="confpassword" changeHandler={changeHandler}value={user.password}/>
 
