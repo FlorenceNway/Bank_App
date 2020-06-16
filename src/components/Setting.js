@@ -5,7 +5,7 @@ import manAvatar from "../images/man_1.svg";
 import API from "./API";
 import "./Style/setting.scss";
 
-const Setting = ({onOffHandler, onOffvalue}) => {
+const Setting = ({onOffHandler, onOffvalue, roundOnOffvalue}) => {
   const [isHidden, setIsHidden] = useState(false);
   const [user, setUser] = useState(null);
   const [onOff , setOnOff] = useState({
@@ -47,6 +47,11 @@ const Setting = ({onOffHandler, onOffvalue}) => {
     onOffHandler(e.target.checked)
   }
 
+  const roundOnOffHandler = (e) => {
+    roundOnOffvalue(e.target.checked)
+  }
+
+
   return !isHidden && user ? (
 
     <div className="setting">
@@ -70,7 +75,7 @@ const Setting = ({onOffHandler, onOffvalue}) => {
             <p>Round expenses and put to savings account</p>
             <span className="on">On</span>
             <label className="switch">
-              <input type="checkbox" value="Off" />
+              <input type="checkbox" onChange={roundOnOffHandler} />
               <span className="slider"></span>
             </label>
             <span className="off">Off</span>
