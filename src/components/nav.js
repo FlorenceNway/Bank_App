@@ -6,7 +6,7 @@ import "./Style/nav.scss";
 import LinksBeforeLogin from "./LinksBeforeLogIn";
 import LinksAfterLogIn from './LinksAfterLogIn';
 
-const Nav = ({onOff, onOffvalue}) => {
+const Nav = ({onOff, onOffvalue, getRoundOnOff}) => {
   const [isHidden, setIsHidden] = useState(true)
 
   const clickSetting = () => {
@@ -15,6 +15,12 @@ const Nav = ({onOff, onOffvalue}) => {
 
   const OnOffHandler = (childData) => { //childData will get e.target.checked value from setting
     onOff(childData)
+  }
+
+  const roundOnOffHandler = (onOffvalue) => {
+    if(getRoundOnOff) {
+      getRoundOnOff(onOffvalue)
+    }
   }
 
   return (<>
@@ -28,7 +34,7 @@ const Nav = ({onOff, onOffvalue}) => {
     </div>
     
     <section className="settingSection">
-      {!isHidden && <Setting onOffHandler={OnOffHandler} onOffvalue={onOffvalue}/>} 
+      {!isHidden && <Setting onOffHandler={OnOffHandler} onOffvalue={onOffvalue} roundOnOffvalue={roundOnOffHandler}/>} 
       {/* onOffvalue is the value from userContext passed from Loans and Savings */}
       {/* Nav pass (props onOffHandler) function and get return e.target.checked (from setting) */}
     </section>
