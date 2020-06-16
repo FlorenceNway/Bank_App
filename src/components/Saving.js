@@ -6,9 +6,10 @@ import TransactionTitle from "./TransactionTitle"
 import './Style/saving.scss'
 import { UserContext } from "./UserContext";
 import Overlay from "./Overlay";
+import BalanceTransfer from "./BalanceTrasfer";
 
 const Savings = () => {
-  const {val, setVal} = useContext(UserContext)
+  const {val, setVal} = useContext(UserContext) //Block OnOff value from context passed from onOff function -line 74
   
   const [isRendering, setIsRendering] = useState(false);
   const [Users, setUsers] = useState([]);
@@ -41,7 +42,7 @@ const Savings = () => {
     }
   }, []);
 
-  const getValuetoTransfer = (e) => {
+  const getValuetoTransfer = (e) => { //e.target.value from transfer input
     setValue(e.target.value)
   }
 
@@ -60,11 +61,17 @@ const Savings = () => {
   const transfer = () => {
     if(addMinus == '+') {
       loggedInUser[0].Saving_balance += parseInt(value)
-      setUser({...user,Saving_balance:loggedInUser[0].Saving_balance})
+      loggedInUser[0].balance -= parseInt(value)
+      setUser({...user,
+        Saving_balance:loggedInUser[0].Saving_balance, //Saving balance
+        balance:loggedInUser[0].balance}) //wallet balance
     
     }else {
       loggedInUser[0].Saving_balance -= parseInt(value)
-      setUser({...user,Saving_balance:loggedInUser[0].Saving_balance})
+      loggedInUser[0].balance += parseInt(value)
+      setUser({...user,
+        Saving_balance:loggedInUser[0].Saving_balance, //Saving balance
+        balance:loggedInUser[0].balance}) //wallet balance
     }
     
     API.patchUser(loggedInUser[0].id,loggedInUser[0])
@@ -79,32 +86,17 @@ const Savings = () => {
       
     <div className="saving">
         <Nav onOff={onOff} onOffvalue={val}/> {/* onOff -> passed from parent , onOffvalue -> val get from useContext */}
-        <section className={'balTranfSection'}>
-            <div className="profile">
-              <div className='balance'>
-                { !user ?
-                  loggedInUser.map((user,index)=> (
-                      <p key={index}>{user.Saving_balance}</p>)): <p>{user.Saving_balance}</p>} 
-                      <p>Balance</p>
-              </div>
-              <div className='saving_buttons'>
-                <button onClick={payIn} className={payInActive?"payInactive":""}>PAY IN</button>
-                <button onClick={payOut} className={payOutActive?"payOutactive":""}>PAY OUT</button>
-              </div>
-            </div>  
-              <hr/>
-              {addMinus? 
-              <div className="transfer">
-                <span>£</span><input type='text' onChange={getValuetoTransfer}/>
-                <button onClick={transfer}>Transfer</button>
-              </div>: ""}
-        </section>   
+
+        <BalanceTransfer user={user} loggedInUser={loggedInUser} In={payIn} Out={payOut} InActive={payInActive} 
+              OutActive={payOutActive} getValuetoTransfer={getValuetoTransfer} transfer={transfer} addMinus={addMinus}
+              InActiveClass={"payInactive"} OutActiveClass={"payOutactive"} InButton={"PAY IN"} OutButton={"PAY OUT"}
+              balance={"Saving_balance"} buttonClass={"saving_buttons"}/>
 
         <div className='transBox'>
           <ul className="transactions">
             <TransactionTitle/>
             {loggedInUser.map(user => user.saving_transactions.length?
-            user.saving_transactions.map((transaction,index)=> (
+             user.saving_transactions.map((transaction,index)=> (
                 <li className='transaction' key={index}>
                   <p>{transaction.transaction}</p>
                   <p><span className={transaction.debit === '+'? "green":"red"}>{transaction.debit}</span>
