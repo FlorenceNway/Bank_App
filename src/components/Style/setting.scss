@@ -8,6 +8,34 @@
         }
     }
 }
+.uploadAvatar {
+    .button {
+            position: relative;
+        span {
+            font-weight: 100;
+            text-decoration: none;
+            color: white;
+            font-size: 1em;
+            position: absolute;
+            top: -11px;
+            left: -10px;
+        }    
+        input {
+            display: none;
+        }
+        label {
+            background: #ef6039;
+            padding: 3px 10px;
+            position: absolute;
+            display: inline;
+            border-radius: 6px;
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+            left: 0;
+        }
+    }
+}
 .box {
     display: flex;
     flex-wrap: wrap;
@@ -31,8 +59,6 @@
     
 }
 
-
-
 label {
     display:flex;
     margin: auto;
@@ -46,7 +72,6 @@ label {
 
     input {
         display: none;
-
     }
     .slider::before{
         position: absolute;
