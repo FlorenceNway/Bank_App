@@ -12,21 +12,22 @@ import Nav from "./Nav";
 import API from './API';
 import { UserContext } from "./UserContext";
 import Overlay from "./Overlay";
+import BalanceTransfer from "./BalanceTrasfer"
+
+let d = new Date()
+d = `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`
 
 const Wallet = () => {
   const {val, setVal} = useContext(UserContext)
+  const [transferValue, setTransferValue] = useState(0)
+  const [Users, setUsers] = useState([]);
+  const [user, setUser] = useState(null)
+  const [addMinus, setAddMinus] = useState(null)
+  const [payInActive, setPayInActive] = useState(false)
+  const [payOutActive, setPayOutActive] = useState(false)
   const [isRendering, setIsRendering] = useState(false);
-  const [getUsers, setFetchUsers] = useState([]);
-
-  useEffect(() => { 
-    API.getUsers().then((users) => {
-      setFetchUsers(users);
-    });
-  }, []);
-
-  const loggedInUser = getUsers.filter(user => user.email === localStorage.userEmail)
-
   const history = useHistory();
+
   useEffect(() => {
     if (!localStorage.userEmail) {
       history.push("/");
@@ -35,29 +36,78 @@ const Wallet = () => {
     }
   }, []);
 
+  useEffect(() => { 
+    API.getUsers().then((users) => {
+      setUsers(users);
+
+      const loggedInUser = Users.find(
+        (user) => user.email === localStorage.userEmail
+      );
+      setUser(loggedInUser);
+    });
+  }, []);
+
+  const loggedInUser = Users.filter(user => user.email === localStorage.userEmail)
+
+  const getValuetoTransfer = (e) => { //e.target.value from transfer input
+    setTransferValue(e.target.value)
+  }
+
+  const payExpense = () => {
+    setAddMinus('-')
+  }
+
+  const transfer = () => {
+    if(addMinus == '-') {
+      loggedInUser[0].balance -= parseInt(transferValue)
+      loggedInUser[0].transactions.push({
+          "transaction": "New Expense",
+          "debitcredit": "-",
+          "amount": parseInt(transferValue)
+      })
+      setUser({...user,
+        balance:loggedInUser[0].balance,
+        transactions:{...loggedInUser[0].transactions}
+      }) //wallet balance
+    }
+    
+    API.patchUser(loggedInUser[0].id,loggedInUser[0])
+  }
+
   const onOff = (data) => { //callback data from setting
     setVal(data)
   }
-
-  let d = new Date()
-  d = `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`
 
   return isRendering ? (
       
     <div className="wallet">
       <Nav onOff={onOff} onOffvalue={val}/>
-  
-      <div className="profile">
-        <div className='balance'>
-        {loggedInUser.map((user,index)=> (
-            <p key={index}>{user.balance}</p>))}
-            <p>Balance</p>
-        </div>
-        <div className='avatar'>
-          <img src={manAvatar} alt="profile"></img>
-          <p>{d}</p>
-        </div>
-      </div>  
+
+      <section className={"balTranfSection"}>
+        <div className="profile">
+            <div className='balance'>
+              {loggedInUser.map((user,index)=> (
+                <p key={index}>{user.balance}</p>))}
+                <p>Balance</p>
+            </div>
+            <div className='avatar'>
+              <img src={manAvatar} alt="profile"></img>
+              <p>{d}</p>
+              <div className="wallet_button">
+                <button onClick={payExpense} className="expenseActive">Add Expense</button>
+            </div>
+            </div>
+          </div>  
+          <hr/>
+          {addMinus? 
+            <div className="transfer">
+                <span>£</span><input type='text' onChange={getValuetoTransfer}/>
+                <button onClick={transfer}>Transfer</button>
+            </div>
+            : 
+            ""}
+      </section>
+        
 
       <div className='transBox'>
         <ul className="transactions">
@@ -75,7 +125,7 @@ const Wallet = () => {
         ))}
         </ul>
       </div>
-
+           
       <Overlay val={val} />
       <Route path="/saving" exact component={Saving} />
       <Route path="/loan" exact component={Loans} />
