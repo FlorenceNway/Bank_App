@@ -78,7 +78,7 @@ label {
         content: "";
         height: 28px;
         width: 28px;
-        left: -2px;
+        right: 1px;
         bottom: -1px;
         background-color: #fff;
         transition: 0.5s;
@@ -90,16 +90,30 @@ input:checked + .slider{
     background-color: grey;
 }
 input:checked + .slider:before{
-    transform: translateX(24px);
+    transform: translateX(-24px);
 }
 .slider {
     position: absolute;
     cursor: pointer;
     top: 0;
     left: 0;
-    right: 0;
+    right: -7px;
     bottom: 0;
     background: rgba(217, 210, 209, 0.2);
     transition: .5s;
     border-radius: 34px;
+}
+
+.overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
 }
