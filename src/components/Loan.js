@@ -5,6 +5,7 @@ import API from './API';
 import TransactionTitle from "./TransactionTitle";
 import './Style/loan.scss'
 import { UserContext } from "./UserContext";
+import Overlay from "./Overlay";
 
 const Loan = () => {
   const {val, setVal} = useContext(UserContext)
@@ -78,7 +79,7 @@ const Loan = () => {
       
     <div className="loan saving">
       <Nav onOff={onOff} onOffvalue={val}/> {/* onOff -> passed from parent , onOffvalue -> get from useContext */}
-      <div className={val? "overlay":""}>
+    
       <section className={'balTranfSection'}>
         <div className="profile">
           <div className='balance'>
@@ -117,7 +118,8 @@ const Loan = () => {
             ))}
           </ul>
       </div>
-      </div>
+      <Overlay val={val} />
+      
     </div>
   ) : (
     ""
