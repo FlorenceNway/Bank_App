@@ -62,7 +62,7 @@ const Savings = () => {
       setUser({...user,Saving_balance:loggedInUser[0].Saving_balance})
     }
     
-    API.patchUser(loggedInUser[0].id,user)
+    API.patchUser(loggedInUser[0].id,loggedInUser[0])
   }
 
   return isRendering ? (
