@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import API from './API'
 import Nav from "./Nav";
 import TransactionTitle from "./TransactionTitle"
 import './Style/saving.scss'
+import { UserContext } from "./UserContext";
 
 const Savings = () => {
+  const {val, setVal} = useContext(UserContext)
+  
   const [isRendering, setIsRendering] = useState(false);
   const [Users, setUsers] = useState([]);
   const [user, setUser] = useState(null)
@@ -13,6 +16,7 @@ const Savings = () => {
   const [addMinus, setAddMinus] = useState(null)
   const [payInActive, setPayInActive] = useState(false)
   const [payOutActive, setPayOutActive] = useState(false)
+  const [overlay, setOverlay] = useState(false)
 
   useEffect(() => {
     API.getUsers().then((users) => {
@@ -65,10 +69,17 @@ const Savings = () => {
     API.patchUser(loggedInUser[0].id,loggedInUser[0])
   }
 
+  const onOff = (data) => {
+    // data ? setOverlay(true) : setOverlay(false)
+    setVal(data)
+  }
+
+  console.log(val)
   return isRendering ? (
       
-    <div className="loan saving">
-        <Nav/>
+    <div className="saving">
+        <Nav onOff={onOff} onOffvalue={val}/>
+        <div className={val? "overlay":""}>
         <section className={'balTranfSection'}>
             <div className="profile">
               <div className='balance'>
@@ -108,7 +119,8 @@ const Savings = () => {
           
         </ul>
       </div>
-        
+    
+    </div>
     </div>
   ) : (
     ""
