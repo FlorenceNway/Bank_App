@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState, useContext} from "react";
 import { useHistory } from "react-router-dom";
 import Saving from "./Saving";
 import Loans from "./Loan";
@@ -10,9 +10,11 @@ import { Route} from "react-router-dom";
 import "./Style/wallet.scss";
 import Nav from "./Nav";
 import API from './API';
+import { UserContext } from "./UserContext";
 
 
 const Wallet = () => {
+  const {val, setVal} = useContext(UserContext)
   const [isRendering, setIsRendering] = useState(false);
   const [getUsers, setFetchUsers] = useState([]);
 
@@ -34,13 +36,18 @@ const Wallet = () => {
     }
   }, []);
 
+  const onOff = (data) => { //callback data from setting
+    setVal(data)
+  }
+
   let d = new Date()
   d = `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`
 
   return isRendering ? (
       
     <div className="wallet">
-      <Nav/>
+      <Nav onOff={onOff} onOffvalue={val}/>
+      <div className={val? "overlay":""}>
       <div className="profile">
         <div className='balance'>
         {loggedInUser.map((user,index)=> (
@@ -70,12 +77,13 @@ const Wallet = () => {
           
         </ul>
       </div>
-        
+    </div> 
       <Route path="/saving" exact component={Saving} />
       <Route path="/loan" exact component={Loans} />
       <Route path="/setting" exact component={Setting} />
       <Route path="/signOut" exact component={Login} />
     </div>
+
   ) : (
     ""
   );
