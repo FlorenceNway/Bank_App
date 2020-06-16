@@ -6,6 +6,8 @@ import TransactionTitle from "./TransactionTitle";
 import './Style/loan.scss'
 import { UserContext } from "./UserContext";
 import Overlay from "./Overlay";
+import BalanceTransfer from "./BalanceTrasfer";
+
 
 const Loan = () => {
   const {val, setVal} = useContext(UserContext)
@@ -59,13 +61,17 @@ const Loan = () => {
   const transfer = () => {
     if(addMinus == '+') {
       loggedInUser[0].Loan_balance -= parseInt(value)
-      setUser({...user,Loan_balance:loggedInUser[0].Loan_balance})
       loggedInUser[0].balance += parseInt(value)
-      setUser({...user,balance:loggedInUser[0].balance})
+      setUser({...user,
+        Loan_balance:loggedInUser[0].Loan_balance, //loan balance
+        balance:loggedInUser[0].balance}) //wallet balance
     
     }else {
       loggedInUser[0].Loan_balance += parseInt(value)
-      setUser({...user,Loan_balance:loggedInUser[0].Loan_balance})
+      loggedInUser[0].balance -= parseInt(value)
+      setUser({...user,
+        Loan_balance:loggedInUser[0].Loan_balance, //loan balance
+        balance:loggedInUser[0].balance}) //wallet balance
     }
     
     API.patchUser(loggedInUser[0].id,loggedInUser[0])
@@ -77,20 +83,20 @@ const Loan = () => {
 
   return isRendering ? (
       
-    <div className="loan saving">
+    <div className="loan">
       <Nav onOff={onOff} onOffvalue={val}/> {/* onOff -> passed from parent , onOffvalue -> get from useContext */}
     
-      <section className={'balTranfSection'}>
+      {/* <section className={'balTranfSection'}>
         <div className="profile">
           <div className='balance'>
               { !user ?
                 loggedInUser.map((user,index)=> (
-                <p key={index}>{user.Loan_balance}</p>)): <p>{user.Loan_balance}</p>} 
+                <p key={index}>{user['Loan_balance']}</p>)): <p>{user['Loan_balance']}</p>} 
                 <p>Balance</p>
           </div>
           <div className='loan_buttons'>
-            <button onClick={takeloan} className={takeActive?"payactive":""}>TAKE LOAN</button>
-            <button onClick={payback} className={payActive?"takeactive":""}>PAY BACK</button>
+            <button onClick={takeloan} className={takeActive?"takeactive":""}>TAKE LOAN</button>
+            <button onClick={payback} className={payActive?"payactive":""}>PAY BACK</button>
           </div>
         </div> 
         <hr/>
@@ -99,8 +105,12 @@ const Loan = () => {
             <button onClick={transfer}>Transfer</button>
         </div>: ""}
         
-      </section>
-       
+      </section> */}
+     
+       <BalanceTransfer user={user} loggedInUser={loggedInUser} In={takeloan} Out={payback} InActive={takeActive} 
+              OutActive={payActive} getValuetoTransfer={getValuetoTransfer} transfer={transfer} addMinus={addMinus}
+              InActiveClass={"takeactive"} OutActiveClass={"payactive"} InButton={"TAKE LOAN"} OutButton={"PAY BACK"}
+              balance={"Loan_balance"} buttonClass={"loan_buttons"} />
 
       <div className='transBox'>
         <ul className="transactions">
