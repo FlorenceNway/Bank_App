@@ -3,9 +3,9 @@
 React Hooks
 =========================
 
-To run :
-Run React -- npm start
-Run Json Server -- json-server -p 3001 db.json
+### To run :
+#### npm start
+#### Run Json Server --> json-server -p 3001 db.json
 
 
 =========================
