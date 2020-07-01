@@ -3,9 +3,11 @@
 React Hooks
 =========================
 
+
 ### To run :
 #### npm start
-#### Run Json Server --> json-server -p 3001 db.json
+### Run Json Server --> 
+#### json-server -p 3001 db.json
 
 
 =========================
@@ -25,5 +27,6 @@ React Hooks
     - Add to main account (Wallet)
 4. Settings tab
     - Block account feature
+    - Control round the penses feature
     - change avatar(db)
-    - change Name and password
+    - change Name and password (user info)
